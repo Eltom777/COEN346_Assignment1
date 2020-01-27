@@ -3,12 +3,12 @@ public class DefectiveLightbulbs {
 	
 	public static void main(String args[]) {
 		
-		int[] input = {1,1,0,1,1,0,1,1};
-		int size = input.length;
+		int[] input = {8,1,1,0,1,1,0,1,1};
+		int size = input[0];
 		
 		DefectiveLightbulbs DL = new DefectiveLightbulbs();
 		
-		DL.FindDefective(input,0,size-1);
+		DL.FindDefective(input,0,size);
 	}
 	
 	public DefectiveLightbulbs() {
