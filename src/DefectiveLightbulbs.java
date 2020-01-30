@@ -7,7 +7,7 @@ public class DefectiveLightbulbs {
 		
 		DefectiveLightbulbs DL = new DefectiveLightbulbs();
 		
-		DL.FindDefective(input,0,size);
+		DL.FindDefective(input,1,size-1);
 	}
 	
 	public void FindDefective(int a[],int start,int end) {
