@@ -13,6 +13,7 @@ public class DefectiveLightbulbs extends Thread {
 		DefectiveLightbulbs DL = new DefectiveLightbulbs(input,1,size-1);
 		
 		DL.start();
+		DL.numOfThread++;
 		
 		try {
 			DL.join();
