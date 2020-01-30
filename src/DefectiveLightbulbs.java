@@ -1,4 +1,4 @@
-public class DefectiveLightbulbs {
+public class DefectiveLightbulbs extends Thread {
 	
 	int start;
 	int end;
@@ -10,9 +10,9 @@ public class DefectiveLightbulbs {
 		int[] input = {8,1,1,0,1,1,0,1,1};
 		int size = input[0];
 		
-		DefectiveLightbulbs DL = new DefectiveLightbulbs();
+		DefectiveLightbulbs DL = new DefectiveLightbulbs(input,1,size-1);
 		
-		DL.FindDefective(input,1,size-1);
+		DL.start();
 	}
 	
 	public DefectiveLightbulbs(int[] a,int start, int end) {
@@ -41,6 +41,10 @@ public class DefectiveLightbulbs {
 			}
 			//thread joins here
 		}
+	}
+	
+	public void run() {
+		FindDefective(a,start,end);
 	}
 	
 	public boolean CheckDefective(int[] a, int start, int end) {
