@@ -36,7 +36,6 @@ public class DefectiveLightbulbs extends Thread {
 			if(a[start] == 0) {
 				System.out.println("Defective Bulb at position: " + start);
 			}
-			//thread joins here
 		}
 		else {
 			if(CheckDefective(a, start, end)) {
@@ -62,7 +61,6 @@ public class DefectiveLightbulbs extends Thread {
 					e.printStackTrace();
 				}
 			}
-			//thread joins here
 		}
 	}
 	
