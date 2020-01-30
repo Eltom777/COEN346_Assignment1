@@ -1,53 +1,39 @@
-
 public class DefectiveLightbulbs {
-	
-	int[] leftArr;
-	int[] rightArr;
-	//int numThread;
-	//boolean isDefective;
-	
 	
 	public static void main(String args[]) {
 		
-		int[] input = {1,1,0,1,1,0,1,1};
-		int size = input.length;
+		int[] input = {8,1,1,0,1,1,0,1,1};
+		int size = input[0];
 		
-		DefectiveLightbulbs DL = new DefectiveLightbulbs(size);
+		DefectiveLightbulbs DL = new DefectiveLightbulbs();
 		
-		DL.FindDefective(input,size);
+		DL.FindDefective(input,1,size-1);
 	}
 	
-	public DefectiveLightbulbs(int psize) {
-		leftArr = new int [psize];
-		rightArr = new int[psize];
-	}
-	
-	public void FindDefective(int[] a,int psize) {
+	public void FindDefective(int a[],int start,int end) {
 		
-		if(psize == 1) { //base case
-			if(a[0] == 0) {
-				System.out.println("Defective Bulb at position: " + a[0]);
+		if(start == end) { //base case
+			if(a[start] == 0) {
+				System.out.println("Defective Bulb at position: " + start);
 			}
 			//thread joins here
 		}
 		else {
-			
-			if(CheckDefective(a,psize)) {
-				System.arraycopy(a, 0, leftArr, 0, psize>>1 -1);
-				System.arraycopy(a,psize>>1,rightArr,0,psize>>1);
+			if(CheckDefective(a, start, end)) {
 				
-				//System.out.println(leftArr.length);
+				int size = (end-start+1);
+				int pivot = (size >> 1) + start;
 				
-				FindDefective(leftArr,leftArr.length);
-				FindDefective(rightArr,rightArr.length);
+				FindDefective(a,start,pivot-1); //leftArr
+				FindDefective(a,pivot,end); //rightArr
+				//thread joins here
 			}
-			
 			//thread joins here
 		}
 	}
 	
-	public boolean CheckDefective(int[] a, int psize) {
-		for(int i = 0; 0 < psize; i++ ) {
+	public boolean CheckDefective(int[] a, int start, int end) {
+		for(int i = start; i <= end; i++ ) {
 			if(a[i] == 0) {
 				return true;
 			}
