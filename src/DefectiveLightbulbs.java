@@ -35,9 +35,16 @@ public class DefectiveLightbulbs extends Thread {
 				int size = (end-start+1);
 				int pivot = (size >> 1) + start;
 				
-				FindDefective(a,start,pivot-1); //leftArr
-				FindDefective(a,pivot,end); //rightArr
-				//thread joins here
+				//System.out.println("left array"); // uncomment to show concurrency 
+				DefectiveLightbulbs DL1 = new DefectiveLightbulbs(a,start,pivot-1);
+				numOfThread++;
+				
+				//System.out.println("right array"); // uncomment to show concurrency
+				DefectiveLightbulbs DL2 = new DefectiveLightbulbs(a,pivot,end);
+				numOfThread++;
+				
+				DL1.start();
+				DL2.start();
 			}
 			//thread joins here
 		}
