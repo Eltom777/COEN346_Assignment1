@@ -1,5 +1,10 @@
 public class DefectiveLightbulbs {
 	
+	int start;
+	int end;
+	int[] a;
+	static int numOfThread = 0;
+	
 	public static void main(String args[]) {
 		
 		int[] input = {8,1,1,0,1,1,0,1,1};
@@ -8,6 +13,12 @@ public class DefectiveLightbulbs {
 		DefectiveLightbulbs DL = new DefectiveLightbulbs();
 		
 		DL.FindDefective(input,1,size-1);
+	}
+	
+	public DefectiveLightbulbs(int[] a,int start, int end) {
+		this.start = start;
+		this.end = end;
+		this.a = a;
 	}
 	
 	public void FindDefective(int a[],int start,int end) {
