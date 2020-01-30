@@ -13,6 +13,14 @@ public class DefectiveLightbulbs extends Thread {
 		DefectiveLightbulbs DL = new DefectiveLightbulbs(input,1,size-1);
 		
 		DL.start();
+		
+		try {
+			DL.join();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println("Number of threads used: " + DL.numOfThread);
 	}
 	
 	public DefectiveLightbulbs(int[] a,int start, int end) {
@@ -45,6 +53,13 @@ public class DefectiveLightbulbs extends Thread {
 				
 				DL1.start();
 				DL2.start();
+				
+				try {
+					DL1.join();
+					DL2.join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 			//thread joins here
 		}
