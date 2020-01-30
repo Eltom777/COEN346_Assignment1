@@ -30,7 +30,7 @@ public class DefectiveLightbulbs extends Thread {
 		this.a = a;
 	}
 	
-	public void FindDefective(int a[],int start,int end) {
+	public void FindDefective() {
 		
 		if(start == end) { //base case
 			if(a[start] == 0) {
@@ -65,7 +65,7 @@ public class DefectiveLightbulbs extends Thread {
 	}
 	
 	public void run() {
-		FindDefective(a,start,end);
+		FindDefective();
 	}
 	
 	public boolean CheckDefective(int[] a, int start, int end) {
