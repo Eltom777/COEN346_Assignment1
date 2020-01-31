@@ -38,7 +38,7 @@ public class DefectiveLightbulbs extends Thread {
 			}
 		}
 		else {
-			if(CheckDefective(a, start, end)) {
+			if(CheckDefective()) {
 				
 				int size = (end-start+1);
 				int pivot = (size >> 1) + start;
@@ -68,7 +68,7 @@ public class DefectiveLightbulbs extends Thread {
 		FindDefective();
 	}
 	
-	public boolean CheckDefective(int[] a, int start, int end) {
+	public boolean CheckDefective() {
 		for(int i = start; i <= end; i++ ) {
 			if(a[i] == 0) {
 				return true;
