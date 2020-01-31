@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
 public class DefectiveLightbulbs extends Thread {
 	
 	int start;
@@ -7,7 +12,18 @@ public class DefectiveLightbulbs extends Thread {
 	
 	public static void main(String args[]) {
 		
-		int[] input = {8,1,1,0,1,1,0,1,1};
+		//Read file into a String Builder
+		String[] number = readFile("src/Input.txt").split("\\n");
+				
+		//Convert String Builder to Integer Array for Manipulation
+		int[] input = new int[number.length];
+		for (int i = 0; i<number.length; i++) {
+			input[i] = Integer.parseInt(number[i]);
+		}
+				
+		System.out.println(Arrays.toString(input));
+		
+		//int[] input = {8,1,1,0,1,1,0,1,1};
 		int size = input[0];
 		
 		DefectiveLightbulbs DL = new DefectiveLightbulbs(input,1,size-1);
@@ -76,4 +92,22 @@ public class DefectiveLightbulbs extends Thread {
 		}
 		return false;
 	}
+	
+	private static String readFile(String name) {
+		try {
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(name)));
+			StringBuilder sb = new StringBuilder();
+			String line = "";
+			
+			while ((line = br.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+			br.close();
+			
+			return sb.toString();
+		} catch (Exception e) {
+			return null;
+		}
+	}
+	
 }
