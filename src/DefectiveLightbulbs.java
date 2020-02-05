@@ -17,7 +17,7 @@ public class DefectiveLightbulbs extends Thread {
 		}
 		else {
 			//Read file into a String Builder
-			String[] number = readFile(args[0]).split("\\n");
+			String[] number = readFile("src/Input.txt").split("\\n");
 			int size = number.length;
 
 			//Convert String Builder to Integer Array for Manipulation
