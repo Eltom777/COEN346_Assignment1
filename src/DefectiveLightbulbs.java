@@ -48,7 +48,7 @@ public class DefectiveLightbulbs extends Thread {
 				System.out.println("Number of threads used: " + DL.numOfThread);
 			}
 			else {
-				System.out.println("Input size in file does not match the actaully size of the number of bulbs.");
+				System.out.println("Input size in file does not match the actaully number of bulbs in the array.");
 				System.out.println("Number of bulbs in input file: "+ input[0]);
 				System.out.println("Actual number of bulbs: " + (size-1));	
 			}
