@@ -76,14 +76,14 @@ public class DefectiveLightbulbs extends Thread {
 				
 				//System.out.println("left array"); // uncomment to show concurrency 
 				DefectiveLightbulbs DL1 = new DefectiveLightbulbs(a,start,pivot-1); // constructing leftarr
-				numOfThread++;
 				
 				//System.out.println("right array"); // uncomment to show concurrency
 				DefectiveLightbulbs DL2 = new DefectiveLightbulbs(a,pivot,end); // constructing rightarr
-				numOfThread++;
 				
 				DL1.start();
+				numOfThread++;
 				DL2.start(); //creating two new threads for left and right arr
+				numOfThread++;
 				
 				try {
 					DL1.join();
