@@ -18,10 +18,11 @@ public class DefectiveLightbulbs extends Thread {
 		else {
 			//Read file into a String Builder
 			String[] number = readFile("src/Input.txt").split("\\n");
+			int size = number.length;
 
 			//Convert String Builder to Integer Array for Manipulation
-			int[] input = new int[number.length];
-			for (int i = 0; i<number.length; i++) {
+			int[] input = new int[size];
+			for (int i = 0; i < size; i++) {
 				input[i] = Integer.parseInt(number[i]);
 				if(i > 0 && input[i] != 1 && input[i] != 0) { //Ensure the array of bulbs only contains 1s or 0s
 					System.out.println( input[i] + " is and invalid entry." );
@@ -32,8 +33,6 @@ public class DefectiveLightbulbs extends Thread {
 			System.out.println("Input content: " + Arrays.toString(input));
 			
 			if(input[0] == size-1) {
-
-				int size = input[0];
 
 				DefectiveLightbulbs DL = new DefectiveLightbulbs(input,1,size-1);
 
