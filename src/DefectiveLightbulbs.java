@@ -31,7 +31,6 @@ public class DefectiveLightbulbs extends Thread {
 
 			System.out.println("Input content: " + Arrays.toString(input));
 
-			//int[] input = {8,1,1,0,1,1,0,1,1};
 			int size = input[0];
 
 			DefectiveLightbulbs DL = new DefectiveLightbulbs(input,1,size-1);
