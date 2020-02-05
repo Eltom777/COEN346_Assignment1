@@ -23,6 +23,10 @@ public class DefectiveLightbulbs extends Thread {
 			int[] input = new int[number.length];
 			for (int i = 0; i<number.length; i++) {
 				input[i] = Integer.parseInt(number[i]);
+				if(i > 0 && input[i] != 1 && input[i] != 0) { //Ensure the array of bulbs only contains 1s or 0s
+					System.out.println( input[i] + " is and invalid entry." );
+					System.exit(0);
+				}
 			}
 
 			System.out.println(Arrays.toString(input));
