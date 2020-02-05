@@ -30,21 +30,29 @@ public class DefectiveLightbulbs extends Thread {
 			}
 
 			System.out.println("Input content: " + Arrays.toString(input));
+			
+			if(input[0] == size-1) {
 
-			int size = input[0];
+				int size = input[0];
 
-			DefectiveLightbulbs DL = new DefectiveLightbulbs(input,1,size-1);
+				DefectiveLightbulbs DL = new DefectiveLightbulbs(input,1,size-1);
 
-			DL.start();
-			DL.numOfThread++;
+				DL.start();
+				DL.numOfThread++;
 
-			try {
-				DL.join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+				try {
+					DL.join();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
+				System.out.println("Number of threads used: " + DL.numOfThread);
 			}
-
-			System.out.println("Number of threads used: " + DL.numOfThread);
+			else {
+				System.out.println("Input size in file does not match the actaully size of the number of bulbs.");
+				System.out.println("Number of bulbs in input file: "+ input[0]);
+				System.out.println("Actual number of bulbs: " + (size-1));	
+			}
 		}
 	}
 	
