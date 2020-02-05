@@ -12,32 +12,37 @@ public class DefectiveLightbulbs extends Thread {
 	
 	public static void main(String args[]) {
 		
-		//Read file into a String Builder
-		String[] number = readFile("src/Input.txt").split("\\n");
-				
-		//Convert String Builder to Integer Array for Manipulation
-		int[] input = new int[number.length];
-		for (int i = 0; i<number.length; i++) {
-			input[i] = Integer.parseInt(number[i]);
+		if(args.length > 1) {
+			System.out.println("Invalid path to input.txt! Recieved more than one argument");
 		}
-				
-		System.out.println(Arrays.toString(input));
-		
-		//int[] input = {8,1,1,0,1,1,0,1,1};
-		int size = input[0];
-		
-		DefectiveLightbulbs DL = new DefectiveLightbulbs(input,1,size-1);
-		
-		DL.start();
-		DL.numOfThread++;
-		
-		try {
-			DL.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		else {
+			//Read file into a String Builder
+			String[] number = readFile("src/Input.txt").split("\\n");
+
+			//Convert String Builder to Integer Array for Manipulation
+			int[] input = new int[number.length];
+			for (int i = 0; i<number.length; i++) {
+				input[i] = Integer.parseInt(number[i]);
+			}
+
+			System.out.println(Arrays.toString(input));
+
+			//int[] input = {8,1,1,0,1,1,0,1,1};
+			int size = input[0];
+
+			DefectiveLightbulbs DL = new DefectiveLightbulbs(input,1,size-1);
+
+			DL.start();
+			DL.numOfThread++;
+
+			try {
+				DL.join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+
+			System.out.println("Number of threads used: " + DL.numOfThread);
 		}
-		
-		System.out.println("Number of threads used: " + DL.numOfThread);
 	}
 	
 	public DefectiveLightbulbs(int[] a,int start, int end) {
