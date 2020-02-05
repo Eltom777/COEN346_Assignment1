@@ -36,11 +36,11 @@ public class DefectiveLightbulbs extends Thread {
 
 				DefectiveLightbulbs DL = new DefectiveLightbulbs(input,1,size-1);
 
-				DL.start();
+				DL.start(); //creating the first thread
 				DL.numOfThread++;
 
 				try {
-					DL.join();
+					DL.join(); //waiting for all subthreads to finish before printing out numOfThread
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -48,7 +48,7 @@ public class DefectiveLightbulbs extends Thread {
 				System.out.println("Number of threads used: " + DL.numOfThread);
 			}
 			else {
-				System.out.println("Input size in file does not match the actaully size of the number of bulbs.");
+				System.out.println("Input size in file does not match the actaully number of bulbs in the array.");
 				System.out.println("Number of bulbs in input file: "+ input[0]);
 				System.out.println("Actual number of bulbs: " + (size-1));	
 			}
@@ -72,22 +72,22 @@ public class DefectiveLightbulbs extends Thread {
 			if(CheckDefective()) {
 				
 				int size = (end-start+1);
-				int pivot = (size >> 1) + start;
+				int pivot = (size >> 1) + start; // determine the middle of the array
 				
 				//System.out.println("left array"); // uncomment to show concurrency 
-				DefectiveLightbulbs DL1 = new DefectiveLightbulbs(a,start,pivot-1);
-				numOfThread++;
+				DefectiveLightbulbs DL1 = new DefectiveLightbulbs(a,start,pivot-1); // constructing leftarr
 				
 				//System.out.println("right array"); // uncomment to show concurrency
-				DefectiveLightbulbs DL2 = new DefectiveLightbulbs(a,pivot,end);
-				numOfThread++;
+				DefectiveLightbulbs DL2 = new DefectiveLightbulbs(a,pivot,end); // constructing rightarr
 				
 				DL1.start();
-				DL2.start();
+				numOfThread++;
+				DL2.start(); //creating two new threads for left and right arr
+				numOfThread++;
 				
 				try {
 					DL1.join();
-					DL2.join();
+					DL2.join(); // waiting for all sub threads to finish to have the correct numOfThread
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -95,11 +95,11 @@ public class DefectiveLightbulbs extends Thread {
 		}
 	}
 	
-	public void run() {
+	public void run() { // every thread will execute FindDefective
 		FindDefective();
 	}
 	
-	public boolean CheckDefective() {
+	public boolean CheckDefective() { //checks to see if there is at least one zero in the array
 		for(int i = start; i <= end; i++ ) {
 			if(a[i] == 0) {
 				return true;
@@ -108,7 +108,7 @@ public class DefectiveLightbulbs extends Thread {
 		return false;
 	}
 	
-	private static String readFile(String name) {
+	private static String readFile(String name) { // method to extract content from a .txt and convert it to an array of strings
 		try {
 			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(name)));
 			StringBuilder sb = new StringBuilder();
