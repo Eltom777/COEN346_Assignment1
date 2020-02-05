@@ -29,7 +29,7 @@ public class DefectiveLightbulbs extends Thread {
 				}
 			}
 
-			System.out.println(Arrays.toString(input));
+			System.out.println("Input content: " + Arrays.toString(input));
 
 			//int[] input = {8,1,1,0,1,1,0,1,1};
 			int size = input[0];
